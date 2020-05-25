@@ -1,4 +1,4 @@
-# Python 3.6 Package Creator for AWS Lambda
+# Experimental Python 3.8 Package Creator for AWS Lambda
 
 <a href="https://www.buymeacoffee.com/NscyVhWZG">Buy me a coffee!![Buy me a coffee!](https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg)</a>
 
@@ -14,8 +14,8 @@ Result is `numpy.zip` that can be added as a [Lambda Layer](https://aws.amazon.c
 
 
 ---
-### Confirmed Python 3.6 dependencies
-Confirmed list of Python 3.6 dependencies that can successfully be built for AWS Lambda with the [Dockerfile](Dockerfile) provided
+### Confirmed Python 3.8 dependencies
+Confirmed list of Python 3.8 dependencies that can successfully be built for AWS Lambda with the [Dockerfile](Dockerfile) provided
 ```
 opencv-python
 numpy
@@ -36,14 +36,14 @@ Premade Docker image can be found on Docker Hub https://cloud.docker.com/reposit
 ```
 FROM amazonlinux:2017.03
 RUN yum -y install git \
-    python36 \
-    python36-pip \
+    python38 \
+    python38-pip \
     zip \
     && yum clean all
 RUN python3 -m pip install --upgrade pip \
     && python3 -m pip install boto3
 RUN yum -y install gcc g++ gcc gcc-c++ cmake
-RUN yum -y install python36*
+RUN yum -y install python38*
 
 ADD package.sh /
 ENTRYPOINT ["/package.sh"]
